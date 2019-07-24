@@ -1,6 +1,6 @@
 import axios from 'axios'
 import router from '../router'
-import store from '@/store/store' // vuex管理
+import {store} from '@/store/store' // vuex管理
 import { Toast } from 'vant' // vant的toast提示框组件
 // 设置post的请求头
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'

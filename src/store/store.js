@@ -1,26 +1,15 @@
-
 import Vue from 'vue'
 import Vuex from 'vuex'
+import state from './states'
+import getters from './getters'
+import mutations from './mutations'
+import actions from './actions'
+
 Vue.use(Vuex)
-const state = {
-  count: 0,
-  token: 'AAA'
-}
-const mutations = {
-  loginSuccess (state, str) {
-    state.token = str
-  },
-  addNumber (state) {
-    state.count++
-  },
-  ruffNumber (state) {
-    state.count--
-  }
 
-}
-const store = new Vuex.Store({
-  state: state,
-  mutations: mutations
+export const store = new Vuex.Store({
+  state,
+  getters,
+  mutations,
+  actions
 })
-
-export default store

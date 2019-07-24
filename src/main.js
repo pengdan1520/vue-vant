@@ -6,7 +6,7 @@ import router from './router'
 import Vant from 'vant'
 import api from './servers/api'
 import 'vant/lib/index.css'
-import store from './store/store.js'
+import { store } from './store/store.js'
 Vue.use(Vant)
 Vue.prototype.$api = api // 将api挂载到vue的原型上复制代码
 Vue.config.productionTip = false
