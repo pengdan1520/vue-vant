@@ -8,9 +8,9 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin') // 混淆打包插件
 const portfinder = require('portfinder')
 
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
@@ -59,6 +59,18 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         collapseWhitespace:true    //删除空白符与换行符
       }
     }),
+
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          warnings: false,
+          drop_debugger: true,
+          drop_console: true
+        }
+      },
+      sourceMap: true,
+      parallel: true
+    }),
     // copy custom static assets
     new CopyWebpackPlugin([
       {
@@ -66,15 +78,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         to: config.dev.assetsSubDirectory,
         ignore: ['.*']
       }
-    ]),
-    new UglifyJSPlugin({
-      compress: {     //压缩代码
-        dead_code: true,    //移除没被引用的代码
-        warnings: false,     //当删除没有用处的代码时，显示警告
-        loops: true //当do、while 、 for循环的判断条件可以确定是，对其进行优化
-      },
-      except: ['$super', '$', 'exports', 'require']    //混淆,并排除关键字
-    }),
+    ])
   ]
 })
 
