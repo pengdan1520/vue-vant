@@ -1,6 +1,6 @@
 # vue-projcet
 
-> A Vue.js project
+> A Vue.js project bugfix
 
 ## Build Setup
 
