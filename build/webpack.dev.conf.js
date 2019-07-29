@@ -9,7 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -53,19 +53,20 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true,
+      inject: 'body',
       minify:{ //压缩HTML文件
         removeComments:true,    //移除HTML中的注释
         collapseWhitespace:true    //删除空白符与换行符
       }
     }),
-
+    // new BundleAnalyzerPlugin(), // 配置文件大小查看插件
     new UglifyJsPlugin({
       uglifyOptions: {
         compress: {
           warnings: false,
           drop_debugger: true,
-          drop_console: true
+          drop_console: true,
+          pure_funcs:['console.log']
         }
       },
       sourceMap: true,

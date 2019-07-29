@@ -1,7 +1,13 @@
 <template>
   <div class="hello">
-    <h1>{{counts}}</h1>
-    <h2>{{this.$store.state.count}}</h2>
+    <router-link to='refresh'>
+      <van-nav-bar
+        title="标题"
+        left-text="返回"
+        right-text="按钮"
+        left-arrow
+      ></van-nav-bar>
+    </router-link>
     <van-card
       v-model='counts'
       :num="counts"
@@ -9,6 +15,9 @@
       desc="描述信息"
       title="商品标题"
       thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"></van-card>
+    <child @func="getMsgFormSon" :toSon="parentMsg"></child>
+    <van-button plain type="primary">{{msg || '等待信息'}}</van-button>
+    <pagination @page="getPage"></pagination>
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="客服" @click="add"></van-goods-action-icon>
       <van-goods-action-icon icon="cart-o" text="购物车" @click="reduce"></van-goods-action-icon>
@@ -19,11 +28,19 @@
 </template>
 
 <script>
+import child from './child'
+import pagination from './pagination'
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 export default {
   name: 'home',
+  components: {
+    child,
+    pagination
+  },
   data () {
     return {
+      parentMsg: 'come for parent',
+      update: 0,
       msg: '',
       number: this.$store.state.count
     }
@@ -45,10 +62,17 @@ export default {
       addmore: 'ADD1000',
       reducemore: 'REdUCE1000'
     }),
+    getPage (page) {
+      console.log('come for page:', page)
+    },
+    getMsgFormSon (data) {
+      this.msg = data
+    },
     onRefresh () {
       this.$router.replace('/refresh')
     },
     add () {
+      this.update++
       this.addnum()
       console.log(this.counts, '+1')
     },
