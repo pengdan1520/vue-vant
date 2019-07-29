@@ -1,13 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '@/components/home'
-import refresh from '@/components/refresh'
 
 Vue.use(Router)
 
 export default new Router({
   // refresh.vue
   beforeRouteEnter (to, from, next) {
+    console.log('1111111')
     next(vm => {
       vm.$router.replace(from.fullPath)
     })
@@ -17,11 +16,17 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: home
+      component: resolve => require(['@/components/home'], resolve),
+      meta: {
+        keepAlive: false // true 表示需要使用缓存 false表示不需要被缓存
+      }
     }, {
       path: '/refresh',
       name: 'refresh',
-      component: refresh
+      component: resolve => require(['@/components/refresh'], resolve),
+      meta: {
+        keepAlive: true // true 表示需要使用缓存 false表示不需要被缓存
+      }
     }
   ]
 })
