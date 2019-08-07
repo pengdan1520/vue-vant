@@ -25,7 +25,7 @@ module.exports = {
     env: {
       NODE_ENV: '"development"'
     },
-    // 设置反向代理
+    // 设置跨域代理
     proxyTable: {
       '/api': {
         target: '',  //目标接口域名

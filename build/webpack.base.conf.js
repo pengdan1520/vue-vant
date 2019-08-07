@@ -4,6 +4,8 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
+
+
 var projectRoot = path.resolve(__dirname, '../')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -52,6 +54,18 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+      },
+      {
+        test: /\.styl$/,
+        use: [
+          'css-loader',
+          {
+            loader: 'stylus-loader',
+            options: {
+              import:['theme.custom.styl']
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

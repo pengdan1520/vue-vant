@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{counts}}</h1>
-    <h2>{{this.$store.state.count}}</h2>
+    <h2>{{this.$store.state.count}}
+    </h2>
     <van-card
       v-model='counts'
       :num="counts"
@@ -68,17 +69,17 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 h1, h2 {
   font-weight: normal;
 }
 ul {
   list-style-type: none;
   padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
+  li{
+    display: inline-block;
+    margin: 0 10px;
+  }
 }
 a {
   color: #42b983;

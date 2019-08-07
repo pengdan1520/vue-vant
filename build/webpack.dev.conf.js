@@ -9,7 +9,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
-
+const poststylus = require('poststylus')
+const pxtorem = require('postcss-pxtorem')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -45,6 +46,15 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': config.dev.env
+    }),
+    // 配置主题色更改
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        stylus: {
+          // pxtorem (配置可根据项目需要而定)
+          use: [poststylus(pxtorem({ rootValue: 100, minPixelValue: 2, propWhiteList: [] }))]
+        }
+      }
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
