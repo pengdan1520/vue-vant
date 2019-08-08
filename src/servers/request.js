@@ -1,20 +1,20 @@
 import axios from 'axios'
 import router from '../router'
 import {store} from '@/store/store' // vuex管理
-import { Toast } from 'vant' // vant的toast提示框组件
+// import { Toast } from 'vant' // vant的toast提示框组件
 // 设置post的请求头
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 /**
  * 提示函数
  * 禁止点击蒙层、显示一秒后关闭
  */
-const tip = msg => {
-  Toast({
-    message: msg,
-    duration: 1000,
-    forbidClick: true
-  })
-}
+// const tip = msg => {
+//   Toast({
+//     message: msg,
+//     duration: 1000,
+//     forbidClick: true
+//   })
+// }
 /**
  * 跳转登录页
  * 携带当前页面路由，以期在登录页面完成登录后返回当前页面
@@ -41,7 +41,7 @@ const errorHandle = (status, other) => {
     // 403 token过期
     // 清除token并跳转登录页
     case 403:
-      tip('登录过期，请重新登录')
+      // tip('登录过期，请重新登录')
       localStorage.removeItem('token')
       store.commit('loginSuccess', null)
       setTimeout(() => {
@@ -50,7 +50,7 @@ const errorHandle = (status, other) => {
       break
     // 404请求不存在
     case 404:
-      tip('请求的资源不存在')
+      // tip('请求的资源不存在')
       break
     default:
       console.log(other)

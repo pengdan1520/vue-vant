@@ -4,11 +4,16 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Vant from 'vant'
+// import Vant from 'vant'
+// import 'vant/lib/index.css'
 import api from './servers/api'
-import 'vant/lib/index.css'
+
+import mandMobile from 'mand-mobile'
+import 'mand-mobile/lib/mand-mobile.css'
+
 import { store } from './store/store.js'
-Vue.use(Vant)
+Vue.use(mandMobile)
+
 Vue.prototype.$api = api // 将api挂载到vue的原型上复制代码
 Vue.config.productionTip = false
 /* eslint-disable no-new */
