@@ -15,14 +15,14 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex';
 export default {
   name: 'home',
   data () {
     return {
       msg: '',
       number: this.$store.state.count
-    }
+    };
   },
   computed: {
     ...mapState({
@@ -42,28 +42,28 @@ export default {
       reducemore: 'REdUCE1000'
     }),
     onRefresh () {
-      this.$router.replace('/refresh')
+      this.$router.replace('/refresh');
     },
     add () {
-      this.addmore()
+      this.addmore();
       this.$api.article.reqDemo().then(res => {
-        console.log(res, 'res')
-      })
+        console.log(res, 'res');
+      });
     },
     reduce () {
-      this.reducenum()
-      console.log(this.counts, '-1')
+      this.reducenum();
+      console.log(this.counts, '-1');
     },
     add1000 () {
-      this.addmore()
-      console.log(this.counts, '+1000')
+      this.addmore();
+      console.log(this.counts, '+1000');
     },
     reduce1000 () {
-      this.reducemore()
-      console.log(this.counts, '-1000')
+      this.reducemore();
+      console.log(this.counts, '-1000');
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

@@ -11,9 +11,9 @@ export default {
   data () {
     return {
       msg: '断网了'
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>

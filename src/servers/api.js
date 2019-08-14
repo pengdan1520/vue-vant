@@ -1,4 +1,4 @@
-import article from '@/api/article'
+import article from '@/api/article';
 export default {
   article
-}
+};
