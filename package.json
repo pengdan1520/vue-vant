@@ -2,7 +2,7 @@
   "name": "vue-projcet",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "pengdan1520 <151243021@qq.com>",
+  "author": "Steven",
   "private": true,
   "scripts": {
     "analyz": "cross-env NODE_ENV=production npm_config_report=true npm run build",
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
+    "js-md5": "^0.7.3",
     "mand-mobile": "^2.4.1",
     "qs": "^6.7.0",
     "vue": "^2.5.2",

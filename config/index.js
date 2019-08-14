@@ -1,7 +1,7 @@
 'use strict'
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   //生产环境
@@ -25,15 +25,15 @@ module.exports = {
     env: {
       NODE_ENV: '"development"'
     },
-    // 设置跨域代理
     proxyTable: {
       '/api': {
-        target: '',  //目标接口域名
-        changeOrigin: true,  //是否跨域
+        //使用"/api"来代替"http://f.apiplus.c"
+        target: 'https://my9696.com',
+        changeOrigin: true, //改变源
         pathRewrite: {
-          '^/api': '/api'   //重写接口
+          '^/api': 'https://my9696.com' // 路径重写
         }
-      },
+      }
     },
     port: 8080,
     assetsSubDirectory: 'static',
@@ -50,4 +50,4 @@ module.exports = {
     cacheBusting: true,
     cssSourceMap: false
   }
-}
+};

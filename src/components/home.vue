@@ -1,7 +1,16 @@
 <template>
   <div class="hello ignore">
-    <md-button type="default">按钮</md-button>
+    <div class="md-example-child md-example-child-notice-bar md-example-child-notice-bar-6">
+      <md-notice-bar
+        icon="volumn"
+        type="warning"
+        scrollable
+      >
+        为了确保您的资金安全，请设置支付密码为了确保您的资金安全，请设置支付密码为了确保您的资金安全，请设置支付密码
+      </md-notice-bar>
+    </div>
     <h1>{{counts}}</h1>
+    <md-button type="primary" @click="add()" round>按钮</md-button>
   </div>
 </template>
 
@@ -36,8 +45,10 @@ export default {
       this.$router.replace('/refresh')
     },
     add () {
-      this.addnum()
-      console.log(this.counts, '+1')
+      this.addmore()
+      this.$api.article.reqDemo().then(res => {
+        console.log(res, 'res')
+      })
     },
     reduce () {
       this.reducenum()
@@ -56,6 +67,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.font-style{
+ font-size:24px;
+}
 h1, h2 {
   font-weight: normal;
 }

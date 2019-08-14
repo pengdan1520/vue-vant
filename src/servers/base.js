@@ -2,8 +2,7 @@
  * 接口域名的管理
  */
 const base = {
-  sq: 'https://xxxx111111.com/api/v1',
-  bd: 'http://xxxxx22222.com/api'
+  BASE_URL: 'http://46.149.201.152:8081'
 }
 
-export default base;
+export default base

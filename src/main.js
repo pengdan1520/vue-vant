@@ -13,8 +13,7 @@ import 'mand-mobile/lib/mand-mobile.css'
 
 import { store } from './store/store.js'
 Vue.use(mandMobile)
-
-Vue.prototype.$api = api // 将api挂载到vue的原型上复制代码
+Vue.prototype.$api = api // 将api挂载到vue的原型上
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
